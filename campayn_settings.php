@@ -26,11 +26,11 @@ var $menu = array(
 var $sections = array(
     'campayn' => array(
         'title' => "Campayn Settings",
-        'description' => "Settings to access the Campayn API. If you need new keys, you can get one at...",
+        'description' => "Settings to access the Campayn API. You can get your key by clicking <a target=\"_blank\" href=\"http://campayn.net/login?redirect=/users/api\">[ here ]</a>.",
         'fields' => array (
           'apikey' => array (
               'label' => "Campayn API Key",
-              'description' => "Enter your Campayn API Key to enable newsletter signup option with the registration form",
+              'description' => "Enter your Campayn API Key before using the plugin. You can get it <a target=\"_blank\" href=\"http://campayn.net/login?redirect=/users/api\">[ here ]</a>.",
               'length' => "65",
               'suffix' => "",
               'default_value' => ""
@@ -59,9 +59,9 @@ var $sections = array(
           ),
           'text' => array(
               'label'       => 'Text',
-              'description' => 'The text before the radio box in the comment form',
+              'description' => 'The text next to the checkbox under the comment form',
               'length'      => 255,
-              'default_value' => 'Signup to out newsletter!',
+              'default_value' => 'Signup for our newsletter!',
           )
     )
     )

@@ -1,4 +1,4 @@
-<?
+<?php 
 
 register_activation_hook(__FILE__,'campayn_install');
 add_action('plugins_loaded', 'campayn_update_db_check');
