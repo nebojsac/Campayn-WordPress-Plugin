@@ -25,7 +25,6 @@ class Campayn_Widget extends WP_Widget {
    */
   public function widget( $args, $instance ) {
     extract( $args );
-    $title = apply_filters( 'widget_title', $instance['title'] );
 
     print $before_widget;
     if (!empty( $title )) {
@@ -47,9 +46,7 @@ class Campayn_Widget extends WP_Widget {
    */
   public function update( $new_instance, $old_instance ) {
     $instance = array();
-    $instance['title'] = strip_tags( $new_instance['title'] );
     $instance['form'] = strip_tags( $new_instance['form'] );
-//    $instance['success'] = strip_tags( $new_instance['success'] );
 
     return $instance;
   }
@@ -62,9 +59,6 @@ class Campayn_Widget extends WP_Widget {
    * @param array $instance Previously saved values from database.
    */
   public function form( $instance ) {
-    isset($instance['title']) ? $title = $instance[ 'title' ] : $title = 'Campayn signup';
-  //  isset($instance['success']) ? $success = $instance[ 'success' ] : $success = __('Thank you for signing up!');
-    
     print '<label for="'.$this->get_field_id('form').'">'.__('Form:').'</label> 
     <select class="widefat" id="'.$this->get_field_id('form').'" name="'.$this->get_field_name('form').'">
       '. campayn_get_forms_as_options($instance['form']) .'
