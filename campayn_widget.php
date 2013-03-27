@@ -65,17 +65,10 @@ class Campayn_Widget extends WP_Widget {
     isset($instance['title']) ? $title = $instance[ 'title' ] : $title = 'Campayn signup';
   //  isset($instance['success']) ? $success = $instance[ 'success' ] : $success = __('Thank you for signing up!');
     
-    print '<p>
-    <label for="'.$this->get_field_id('title').'">'.__('Title:').'</label> 
-    <input class="widefat" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" type="text" value="'.esc_attr( $title ).'"/>
-    <br/>
-    <label for="'.$this->get_field_id('form').'">'.__('Form:').'</label> 
+    print '<label for="'.$this->get_field_id('form').'">'.__('Form:').'</label> 
     <select class="widefat" id="'.$this->get_field_id('form').'" name="'.$this->get_field_name('form').'">
       '. campayn_get_forms_as_options($instance['form']) .'
     </select>';
-//    <br/>
-//    <label for="'.$this->get_field_id('success').'">'.__('Success:').'</label> 
-//    <input class="widefat" id="'.$this->get_field_id('success').'" name="'.$this->get_field_name('success').'" type="text" value="'.esc_attr( $success ).'"/>
     print '</p>';
   }
 
