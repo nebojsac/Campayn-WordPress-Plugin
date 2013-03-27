@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Adds Campayn_Widget widget.
  */
