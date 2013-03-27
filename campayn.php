@@ -71,9 +71,9 @@ function do_form_list() {
      print _e('You must enter your API key before lists are shown.');
      return;
   }
-  $fs = $wpdb->get_results('select * from '.$ft);
+//  $fs = $wpdb->get_results('select * from '.$ft);
   if (empty($fs)) {
-    print _e('There are no forms in your campayn account.');
+    print 'You don\'t have a signup form set up in Campayn. Click on the <a href="http://campayn.net/contacts">CONTACTS</a> tab and select \'Add Sign Up Form\' by clicking on the Options arrow to the right of you contact list.';
   }
   print '<table>';
   foreach ($fs as $f) {
@@ -204,7 +204,7 @@ function campayn_setting_dropdown() {
 
 function campayn_setting_checkbox() {
   $value = get_option('ob_campayn_enabled');                                                                                                 
-  print '<input name="ob_campayn_enabled" id="ob_campayn_enabled" type="checkbox" value="1" class="code" '.checked(1,$value,false ).'/>';
+  print '<input name="ob_campayn_enabled" id="ob_campayn_enabled" type="checkbox" value="1" class="code" '.checked(1,$value,false ).'/> <label for="ob_campayn_enabled"><em>Allow people to subscribe to your newsletter when making comments to your blog.</em></label>';
 }
 
 function campayn_add_comment_fields($fields) {

@@ -47,11 +47,11 @@ var $sections_withoutkey = array(
 var $sections_withkey = array(
     'campayn' => array(
         'title' => "Campayn Settings",
-        'description' => "Settings to access the Campayn API. If you need new keys, you can get one at...",
+        'description' => "",
         'fields' => array (
           'apikey' => array (
               'label' => "Campayn API Key",
-              'description' => "Enter your Campayn API Key to enable newsletter signup option with the registration form",
+              'description' => "Enter your Campayn API Key before using the plugin. You can get one <a href=\"http://campayn.net/login?redirect=/users/api\">here</a>.",
               'length' => "65",
               'suffix' => "",
               'default_value' => ""
@@ -71,7 +71,7 @@ var $sections_withkey = array(
        'description' => "",
        'fields' => array(
           'enabled' => array (
-              'label' => "Enable comment subscriptions",
+              'label' => "Enable comment subscriptions", // you can edit this text in campayn.php in the function below
               'function' => "campayn_setting_checkbox",
               ),
           'list' => array(
@@ -80,7 +80,7 @@ var $sections_withkey = array(
           ),
           'text' => array(
               'label'       => 'Text',
-              'description' => 'The text before the radio box in the comment form',
+              'description' => '',
               'length'      => 255,
               'default_value' => 'Signup to out newsletter!',
           )
@@ -121,7 +121,6 @@ function admin_init(){
   $apikey = get_option('ob_campayn_apikey');
   $apikey = $apikey['text_string'];
   if (!empty($apikey)) {
-    print 'apikey is '.$apikey.' so using withkey';
     $this->settingsConfig['sections'] = $this->settingsConfig['sections_withkey'];
   } else {
     $this->settingsConfig['sections'] = $this->settingsConfig['sections_withoutkey'];
