@@ -123,7 +123,7 @@ function campayn_get_form($id,$widget = 0) {
   } else {
     $class = '';
   }
-  $form = '<h3 '.$class.'>'.$f->form_title.'</h3>';
+  $form = '<h3 '.$class.'><span>'.$f->form_title.'</span></h3>';
   $form .= str_replace('{redirectUrl}',$proto . $_SERVER["HTTP_HOST"] . $uri ,$f->wp_form);
   return $form;
 } 
