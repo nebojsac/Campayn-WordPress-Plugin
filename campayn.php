@@ -37,7 +37,6 @@ function api_get_forms() {
 
   try {
     $json = $campayn_api->get('/forms.json?filter[form_type]=1');
-//  print_r($json);
     $forms = json_decode($json,true); // we will get the data as an array
     if (sizeof($forms)) {
       $ft = get_option('campayn_forms_table');
@@ -71,7 +70,7 @@ function do_form_list() {
      print _e('You must enter your API key before lists are shown.');
      return;
   }
-//  $fs = $wpdb->get_results('select * from '.$ft);
+  $fs = $wpdb->get_results('select * from '.$ft);
   if (empty($fs)) {
     print 'You don\'t have a signup form set up in Campayn. Click on the <a href="http://campayn.net/contacts">CONTACTS</a> tab and select \'Add Sign Up Form\' by clicking on the Options arrow to the right of you contact list.';
   }
