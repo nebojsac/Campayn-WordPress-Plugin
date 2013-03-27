@@ -118,7 +118,8 @@ function campayn_get_form($id) {
   
   $url = preg_replace('/([?&])formError=[^&]+(&|$)/','$1',$_SERVER["REQUEST_URI"]);
   $url = preg_replace('/([?&])errorReason=[^&]+(&|$)/','$1',$url);
-  $form = str_replace('{redirectUrl}',$proto . $_SERVER["HTTP_HOST"] . $uri ,$f->wp_form);
+  $form = '<h3>'.$f->form_title.'</h3>';
+  $form .= str_replace('{redirectUrl}',$proto . $_SERVER["HTTP_HOST"] . $uri ,$f->wp_form);
   return $form;
 } 
 
