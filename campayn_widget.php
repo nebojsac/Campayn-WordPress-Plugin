@@ -30,7 +30,7 @@ class Campayn_Widget extends WP_Widget {
     if (!empty( $title )) {
      print $before_title . $title . $after_title;
     }
-    print campayn_get_form_message($instance['form']);
+    print campayn_get_form_message($instance['form'],1);
     print $after_widget;
   }
 

@@ -101,7 +101,7 @@ function campayn_signup_callback() {
 
 
 //return with the form of the given id
-function campayn_get_form($id) {
+function campayn_get_form($id,$widget = 0) {
   global $wpdb;
 
 
@@ -118,13 +118,18 @@ function campayn_get_form($id) {
   
   $url = preg_replace('/([?&])formError=[^&]+(&|$)/','$1',$_SERVER["REQUEST_URI"]);
   $url = preg_replace('/([?&])errorReason=[^&]+(&|$)/','$1',$url);
-  $form = '<h3>'.$f->form_title.'</h3>';
+  if ($widget) {
+    $class  = ' class="widget-title" ';
+  } else {
+    $class = '';
+  }
+  $form = '<h3 '.$class.'>'.$f->form_title.'</h3>';
   $form .= str_replace('{redirectUrl}',$proto . $_SERVER["HTTP_HOST"] . $uri ,$f->wp_form);
   return $form;
 } 
 
 // return with either the form or the appropriate thanks/error message in its stead
-function campayn_get_form_message($id) {
+function campayn_get_form_message($id,$widget = 0) {
   $rv = ''; // just to be sure
   if (is_array($id)) { //called from the shortcode
     $id = $id['form'];
@@ -137,7 +142,7 @@ function campayn_get_form_message($id) {
       $rv = $_GET['errorReason']; // we don't return, because we need the message AND the form
     }
   }
-  return campayn_get_form($id).' '.$rv; // as I said, form + error message (if there is one)
+  return campayn_get_form($id,$widget).' '.$rv; // as I said, form + error message (if there is one)
 } add_shortcode('campayn',campayn_get_form_message);
 
 function campayn_get_forms_as_options($selected) {
