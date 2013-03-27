@@ -73,6 +73,7 @@ function do_form_list() {
   $fs = $wpdb->get_results('select * from '.$ft);
   if (empty($fs)) {
     print 'You don\'t have a signup form set up in Campayn. Click on the <a href="http://campayn.net/contacts">CONTACTS</a> tab and select \'Add Sign Up Form\' by clicking on the Options arrow to the right of you contact list.';
+    return;
   }
   print '<table>';
   foreach ($fs as $f) {
