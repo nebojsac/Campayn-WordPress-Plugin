@@ -94,6 +94,12 @@ function ob_api_key_callback() {
   do_form_list();
 }
 
+//text after 'Sign up free' in admin area
+function campayn_signup_callback() {
+  print "If you don't have a Campayn account you can sign up for free <a href=\"http://campayn.net/signup\">here</a>.";
+}
+
+
 //return with the form of the given id
 function campayn_get_form($id) {
   global $wpdb;
@@ -178,6 +184,7 @@ function campayn_get_lists() {
    print _e("<br>Caught exception when sending message : " .  $e->getMessage());
   }
 }
+
 
 //creating the dropdown from the email lists ofr the settings page
 

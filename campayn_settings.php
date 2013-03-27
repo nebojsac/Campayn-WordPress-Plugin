@@ -23,7 +23,28 @@ var $menu = array(
 	'nav_title' => "Campayn" // how page is listed on left-hand Settings panel
 	);
 
-var $sections = array(
+// settings screen WITHOUT API key
+var $sections_withoutkey = array(
+    'campayn' => array(
+        'title' => "Campayn Settings",
+        'description' => "",
+        'fields' => array (
+          'apikey' => array (
+              'label' => "Campayn API Key",
+              'description' => "Enter your Campayn API Key before using the plugin. You can get one <a href=\"http://campayn.net/login?redirect=/users/api\">here</a>.",
+              'length' => "65",
+              'suffix' => "",
+              'default_value' => ""
+              ),
+          'signup' => array(
+              'label' => "Sign up free",
+              'description' => "You can edit this text by editin the function... ",
+              'function'  => 'campayn_signup_callback',
+          )
+      )));
+
+//settings screen WITH API key
+var $sections_withkey = array(
     'campayn' => array(
         'title' => "Campayn Settings",
         'description' => "Settings to access the Campayn API. If you need new keys, you can get one at...",
@@ -74,7 +95,10 @@ class settings {
 var $settingsConfig = NULL;
  
 function __CONSTRUCT() {
+
 	$this->settingsConfig = get_class_vars(sprintf('\%s\settings_config',__NAMESPACE__));
+
+
     if (function_exists('add_action')) :
       add_action('admin_init', array( &$this, 'admin_init'));
       add_action('admin_menu', array( &$this, 'admin_add_page'));
@@ -94,6 +118,15 @@ function options_page() {
 	}
  
 function admin_init(){
+  $apikey = get_option('ob_campayn_apikey');
+  $apikey = $apikey['text_string'];
+  if (!empty($apikey)) {
+    print 'apikey is '.$apikey.' so using withkey';
+    $this->settingsConfig['sections'] = $this->settingsConfig['sections_withkey'];
+  } else {
+    $this->settingsConfig['sections'] = $this->settingsConfig['sections_withoutkey'];
+  }
+
   foreach ($this->settingsConfig["sections"] AS $section_key=>$section_value) :
     add_settings_section($section_key, $section_value['title'], array( &$this, 'section_text'), $this->settingsConfig['menu']['page_name'], $section_value);
     foreach ($section_value['fields'] AS $field_key=>$field_value) :
