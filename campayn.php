@@ -2,7 +2,7 @@
 /*
 
 Plugin Name: Campayn
-Plugin URI: http://campayn.brow.hu/
+Plugin URI: https://github.com/nebojsac/Campayn-WordPress-Plugin 
 Description: Plugin for using the campayn.com API with Wordpress
 Version: 0.1
 Author: Zoltan Lengyel
