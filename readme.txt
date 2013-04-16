@@ -4,7 +4,7 @@ Donate link:
 Tags: email, campayn, marketing, newsletter, plugin, signup, widget, shortcode
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.12
+Stable tag: 0.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ After installation the setting page will guide you through the setup and you can
 == Installation ==
 
 1. Unzip our archive
-2. Upload the entire `Campayn-wordpress-plugin-master` directory to the `/wp-content/plugins/` directory
+2. Upload the entire `campayn-email-newsletter-signup` directory to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Find the Campayn menu in the settings page
 5. Fill in your API key
