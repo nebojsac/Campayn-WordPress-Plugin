@@ -31,7 +31,7 @@ var $sections_withoutkey = array(
         'fields' => array (
           'apikey' => array (
               'label' => "Campayn API Key",
-              'description' => "Enter your Campayn API Key before using the plugin. You can get one <a href=\"http://campayn.net/login?redirect=/users/api\">here</a>.",
+              'description' => "Enter your Campayn API Key before using the plugin. You can get one <a href=\"http://campayn.com/login?redirect=/users/api\">here</a>.",
               'length' => "65",
               'suffix' => "",
               'default_value' => ""
@@ -51,7 +51,7 @@ var $sections_withkey = array(
         'fields' => array (
           'apikey' => array (
               'label' => "Campayn API Key",
-              'description' => "Enter your Campayn API Key before using the plugin. You can get one <a href=\"http://campayn.net/login?redirect=/users/api\">here</a>.",
+              'description' => "Enter your Campayn API Key before using the plugin. You can get one <a href=\"http://campayn.com/login?redirect=/users/api\">here</a>.",
               'length' => "65",
               'suffix' => "",
               'default_value' => ""

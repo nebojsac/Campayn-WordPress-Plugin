@@ -4,7 +4,7 @@
 Plugin Name: Campayn
 Plugin URI: https://github.com/nebojsac/Campayn-WordPress-Plugin 
 Description: Plugin for using the campayn.com API with Wordpress
-Version: 0.15
+Version: 0.16
 Author: Zoltan Lengyel
 Author URI: http://brow.hu/
 License: GPL2
@@ -20,7 +20,7 @@ function campayn_init() {
   global $campayn_api;
   $apikey = get_option('ob_campayn_apikey');
   $apikey = $apikey['text_string'];
-  $campayn_api = new Pest('http://api.campayn.net/api/v1/');
+  $campayn_api = new Pest('http://api.campayn.com/api/v1/');
   //$campayn_api = new Pest('http://localhost:6666');
   $campayn_api->curl_opts[CURLOPT_HTTPHEADER] = array('Authorization:TRUEREST apikey='.$apikey);
 } add_action('init','campayn_init');
@@ -72,7 +72,7 @@ function do_form_list() {
   }
   $fs = $wpdb->get_results('select * from '.$ft);
   if (empty($fs)) {
-    print 'You don\'t have a signup form set up in Campayn. Click on the <a href="http://campayn.net/contacts">CONTACTS</a> tab and select \'Add Sign Up Form\' by clicking on the Options arrow to the right of you contact list.';
+    print 'You don\'t have a signup form set up in Campayn. Click on the <a href="http://campayn.com/contacts">CONTACTS</a> tab and select \'Add Sign Up Form\' by clicking on the Options arrow to the right of you contact list.';
     return;
   }
   print '<table>';
@@ -96,7 +96,7 @@ function ob_api_key_callback() {
 
 //text after 'Sign up free' in admin area
 function campayn_signup_callback() {
-  print "If you don't have a Campayn account you can sign up for free <a href=\"http://campayn.net/signup\">here</a>.";
+  print "If you don't have a Campayn account you can sign up for free <a href=\"http://campayn.com/signup\">here</a>.";
 }
 
 
