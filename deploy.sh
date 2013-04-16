@@ -71,8 +71,8 @@ echo "Changing directory to SVN and committing to trunk"
 cd $SVNPATH/trunk/
 # Add all new files that are not set to be ignored
 svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
-svn add pest/PestJSON.php
 svn commit --username=$SVNUSER -m "$COMMITMSG"
+
 
 echo "Creating new SVN tag & committing it"
 cd $SVNPATH
