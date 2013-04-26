@@ -37,7 +37,7 @@ echo "Versions match in readme.txt and $MAINFILE. Let's proceed..."
 if git show-ref --tags --quiet --verify -- "refs/tags/$NEWVERSION1"
 	then 
 		echo "Version $NEWVERSION1 already exists as git tag. Exiting...."; 
-		exit 1; 
+#		exit 1; 
 	else
 		echo "Git version does not exist. Let's proceed..."
 fi
@@ -81,6 +81,6 @@ cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
 
 echo "Removing temporary directory $SVNPATH"
-rm -fr $SVNPATH/
+#rm -fr $SVNPATH/
 
 echo "*** FIN ***"
