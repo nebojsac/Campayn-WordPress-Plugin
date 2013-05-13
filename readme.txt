@@ -4,7 +4,7 @@ Donate link:
 Tags: email, campayn, marketing, newsletter, plugin, signup, widget, shortcode
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.181
+Stable tag: 0.182
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,9 +35,12 @@ With Campayn you can create, share and track email newsletters.
 
 == Screenshots ==
 
-1. Entering the API Key to the settings page
-2. The List of shortcodes and 
-3. The Widget page with the Campayn widget
+1. After uploading the directory to your wordpress, you should click "Install Now" on the Plugins page
+2. After installing click on "Activate Plugin"
+3. You can edit the plugin settings by clicking 'Edit' on the Plugins page.
+4. 
+5.
+6.
 
 == Changelog ==
 
