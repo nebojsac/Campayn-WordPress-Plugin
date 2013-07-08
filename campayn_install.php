@@ -15,12 +15,12 @@ function campayn_install() {
    // we don't need auto incremented id, as we get the id from the API
    // we will work with delete and re-insert only.
    //
-   // example json response to store (GET http://api.campayn.net/api/v1/forms.json?filter[form_type]=1):
+   // example json response to store (GET http://api.campayn.com/api/v1/forms.json?filter[form_type]=1):
    // {   "id"              : "1603",
    //     "contact_list_id" : "1589",
    //     "form_title"      : "Only Email",
    //     "form_type"       : "1",
-   //     "wp_form"         : "<form id=\"cmp_campayn\" action=\"http:\/\/campayn.net\/contacts\/signup_form_add_contact\/1589\" method=\"post\"><div>\n<label for=\"email\">Email:<span style=\"color:red\">*<\/span><\/label>\n<br \/>\n<input name=\"email\" id=\"email\" type=\"text\" placeholder=\"Email\" class=\"required\"\/><\/div>\n<input type=\"submit\" name=\"submit\" value=\"Subscribe\" \/><input type=\"hidden\" name=\"formId\" value=\"1603\" \/><\/form>",
+   //     "wp_form"         : "<form id=\"cmp_campayn\" action=\"http:\/\/campayn.com\/contacts\/signup_form_add_contact\/1589\" method=\"post\"><div>\n<label for=\"email\">Email:<span style=\"color:red\">*<\/span><\/label>\n<br \/>\n<input name=\"email\" id=\"email\" type=\"text\" placeholder=\"Email\" class=\"required\"\/><\/div>\n<input type=\"submit\" name=\"submit\" value=\"Subscribe\" \/><input type=\"hidden\" name=\"formId\" value=\"1603\" \/><\/form>",
    //     "list_name":"Sample Contact List"
    // }
    update_option('campayn_forms_table',$forms_table);

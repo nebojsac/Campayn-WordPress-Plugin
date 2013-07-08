@@ -1,10 +1,10 @@
 === Campayn email newsletter sign-up ===
-Contributors: zoltan_lengyel
+Contributors: zoltan_lengyel, nebojsac
 Donate link: 
 Tags: email, campayn, marketing, newsletter, plugin, signup, widget, shortcode
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.15
+Stable tag: 0.182
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ The Campayn plugin makes it easy to add subscribe forms for your Campayn lists, 
 
 The Campayn plugin makes it easy to add subscribe forms for your Campayn lists, or subscribe your commenters to a list.
 
-Campayn is similar to MailChimp, Aweber and Constant Contact but has a Free for Life plan and the lowest cost paid plans. You can sign up for a free account  <a href=\"http://campayn.com/signup\">here</a>.
+Campayn is similar to MailChimp, Aweber and Constant Contact but has a Free for Life plan and the lowest cost paid plans. You can sign up for a free account  <a href=\"http://campayn.com/\">here</a>.
 
 After installation the setting page will guide you through the setup and you can have your subscription form on your blog within minutes!
 
@@ -35,9 +35,12 @@ With Campayn you can create, share and track email newsletters.
 
 == Screenshots ==
 
-1. Entering the API Key to the settings page
-2. The List of shortcodes and 
-3. The Widget page with the Campayn widget
+1. After uploading the directory to your wordpress, you should click "Install Now" on the Plugins page
+2. After installing click on "Activate Plugin"
+3. You can edit the plugin settings by clicking 'Edit' on the Plugins page.
+4. 
+5.
+6.
 
 == Changelog ==
 
