@@ -11,13 +11,11 @@
 //  * Full details of how to use Settings see here: http://codex.wordpress.org/Settings_API  
  
  
-namespace ob_campayn;
-
-class settings_config {
-var $group = __NAMESPACE__; // defines setting groups (should be bespoke to your settings) 
+class ob_campayn_settings_config {
+var $group = 'ob_campayn'; // defines setting groups (should be bespoke to your settings) 
 
 var $menu = array( 
-	'page_name' => __NAMESPACE__, // defines which pages settings will appear on. Either bespoke or media/discussion/reading etc
+	'page_name' => 'ob_campayn', // defines which pages settings will appear on. Either bespoke or media/discussion/reading etc
 	'title' => "Campayn",  // page title that is displayed 
 	'intro_text' => "", // This allows you to configure the Bar search plugin exactly the way you want it", // text below title
 	'nav_title' => "Campayn" // how page is listed on left-hand Settings panel
@@ -91,12 +89,12 @@ var $sections_withkey = array(
 
 
 
-class settings {
+class ob_campayn_settings {
 var $settingsConfig = NULL;
  
 function __CONSTRUCT() {
 
-	$this->settingsConfig = get_class_vars(sprintf('\%s\settings_config',__NAMESPACE__));
+	$this->settingsConfig = get_class_vars(sprintf('%s_settings_config','ob_campayn'));
 
 
     if (function_exists('add_action')) :
@@ -165,7 +163,7 @@ function setting_dropdown($value = NULL) {
  
 //end class
 }
-$a = (sprintf('\%s\settings',__NAMESPACE__));
-$b = (sprintf("%s_init",__NAMESPACE__));
+$a = (sprintf('%s_settings','ob_campayn'));
+$b = (sprintf("%s_init",'ob_campayn'));
 $$b = new $a;
 ?>
