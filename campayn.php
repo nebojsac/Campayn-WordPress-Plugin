@@ -4,7 +4,7 @@
 Plugin Name: Campayn
 Plugin URI: https://github.com/nebojsac/Campayn-WordPress-Plugin 
 Description: Plugin for using the campayn.com API with Wordpress
-Version: 0.184
+Version: 0.185
 Author: Zoltan Lengyel
 Author URI: http://brow.hu/
 License: GPL2
@@ -118,13 +118,15 @@ function campayn_get_form($id,$widget = 0) {
   
   $url = preg_replace('/([?&])formError=[^&]+(&|$)/','$1',$_SERVER["REQUEST_URI"]);
   $url = preg_replace('/([?&])errorReason=[^&]+(&|$)/','$1',$url);
+  $url = preg_replace('/([?&])formSuccess=[^&]+(&|$)/','$1',$url);
+  $url = preg_replace('/([?&])formId=[^&]+(&|$)/','$1',$url);
   if ($widget) {
     $class  = ' class="widget-title" ';
   } else {
     $class = '';
   }
   $form = '<h3 '.$class.'><span>'.$f->form_title.'</span></h3>';
-  $form .= str_replace('{redirectUrl}',$proto . $_SERVER["HTTP_HOST"] . $uri ,$f->wp_form);
+  $form .= str_replace('{redirectUrl}',$proto . $_SERVER["HTTP_HOST"] . $url ,$f->wp_form);
   return $form;
 } 
 
