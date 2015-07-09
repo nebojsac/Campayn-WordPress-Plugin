@@ -23,8 +23,10 @@ function campayn_init() {
   $apikey = get_option('ob_campayn_apikey');
   $apikey = $apikey['text_string'];
   
-  //$campayn_api = new Pest('http://api.campayn.com/api/v1/');
-  $campayn_api = new Pest('http://campayn.dev/api/v1/');
+  $campayn_api = new Pest('http://api.campayn.com/api/v1/');
+  
+  //Test URLs
+  //$campayn_api = new Pest('http://campayn.dev/api/v1/');
   //$campayn_api = new Pest('http://localhost:6666');
   $campayn_api->curl_opts[CURLOPT_HTTPHEADER] = array('Authorization:TRUEREST apikey='.$apikey);
   
