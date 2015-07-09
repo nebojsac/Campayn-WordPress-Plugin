@@ -12,9 +12,6 @@ function campayn_install() {
    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
    $forms_table = $wpdb->prefix.'campayn_forms';
 
-   // we don't need auto incremented id, as we get the id from the API
-   // we will work with delete and re-insert only.
-   //
    // example json response to store (GET http://api.campayn.com/api/v1/forms.json?filter[form_type]=1):
    // {   "id"              : "1603",
    //     "contact_list_id" : "1589",
@@ -30,9 +27,9 @@ function campayn_install() {
     form_title varchar(255),
     form_type varchar(255), 
     wp_form text,
-    list_name varchar(255)
-   ); ';
-    //unique key id (id)
+    list_name varchar(255),
+    PRIMARY KEY (`id`)
+   );';
    dbDelta($sql);
 }
 

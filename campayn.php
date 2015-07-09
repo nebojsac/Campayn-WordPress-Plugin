@@ -4,7 +4,7 @@
 Plugin Name: Campayn
 Plugin URI: https://github.com/nebojsac/Campayn-WordPress-Plugin 
 Description: Plugin for using the campayn.com API with Wordpress
-Version: 0.185
+Version: 0.19
 Author: Zoltan Lengyel
 Author URI: http://brow.hu/
 License: GPL2
@@ -18,20 +18,35 @@ include('campayn_install.php');
 
 function campayn_init() {
   global $campayn_api;
+  global $badApi;
+  $badApi = false;
   $apikey = get_option('ob_campayn_apikey');
   $apikey = $apikey['text_string'];
-  $campayn_api = new Pest('http://api.campayn.com/api/v1/');
+  
+  //$campayn_api = new Pest('http://api.campayn.com/api/v1/');
+  $campayn_api = new Pest('http://campayn.dev/api/v1/');
   //$campayn_api = new Pest('http://localhost:6666');
   $campayn_api->curl_opts[CURLOPT_HTTPHEADER] = array('Authorization:TRUEREST apikey='.$apikey);
+  
+  try {
+    $json = $campayn_api->get('/forms.json?filter[form_type]=1');
+  } catch (Exception $e) {
+    $badApi = true;
+  }
 } add_action('init','campayn_init');
 
 // downloads the form list from the campayn api
 function api_get_forms() {
   global $wpdb;
   global $campayn_api;
+  global $badApi;
   $apikey = get_option('ob_campayn_apikey');
   $apikey = $apikey['text_string'];
   if (empty($apikey)) {
+    return;
+  }
+  
+  if ($badApi) {
     return;
   }
 
@@ -62,6 +77,7 @@ function api_get_forms() {
 // grab the forms from the db and display them
 function do_form_list() {
   global $wpdb;
+  global $badApi;
   
   $apikey = get_option('ob_campayn_apikey');
   $apikey = $apikey['text_string'];
@@ -70,6 +86,12 @@ function do_form_list() {
      print _e('You must enter your API key before lists are shown.');
      return;
   }
+  
+  if ($badApi) {
+    echo("-");
+    return;
+  }
+  
   $fs = $wpdb->get_results('select * from '.$ft);
   if (empty($fs)) {
     print 'You don\'t have a signup form set up in Campayn. Click on the <a href="http://campayn.com/contacts">CONTACTS</a> tab and select \'Add Sign Up Form\' by clicking on the Options arrow to the right of you contact list.';
@@ -82,7 +104,7 @@ function do_form_list() {
     } else {
       $shortcode = 'There is no wordpress version of this form';
     }
-    print "<tr><td>{$f->form_title}</td><td>{$f->list_name}</td><td>{$shortcode}</td></tr>"; 
+    print "<tr style=\"background-color:#FFF\"><td style=\"font-weight:bold;\">{$f->form_title}</td><td>{$f->list_name}</td><td>{$shortcode}</td></tr>"; 
   }
   print '</table>';
 }
@@ -92,6 +114,17 @@ function do_form_list() {
 function ob_api_key_callback() {
   api_get_forms();
   do_form_list();
+}
+
+//Is the API key valid?
+function campaynApiKeyCheck() {
+  global $badApi;
+  
+  if ($badApi) {
+    echo('<div style="background-color:red; color:#FFF; padding:4px; display:inline-block;">Check your API key, something\'s not right...</div>');
+  } else {
+    echo('<div style="background-color:green; color:#FFF; padding:4px; display:inline-block;">API key is functional</div>');
+  }
 }
 
 //text after 'Sign up free' in admin area
@@ -172,12 +205,18 @@ function campayn_get_forms_as_options($selected) {
 function campayn_get_lists() {
   global $wpdb;
   global $campayn_api;
+  global $badApi;
+  
   $apikey = get_option('ob_campayn_apikey');
   $apikey = $apikey['text_string'];
   if (empty($apikey)) {
     return;
   }
 
+  if ($badApi) {
+    return;
+  }
+  
   try {
     $json = $campayn_api->get('/lists.json');
     $forms = json_decode($json,true); // we will get the data as an array
@@ -197,10 +236,22 @@ function campayn_get_lists() {
 //creating the dropdown from the email lists ofr the settings page
 
 function campayn_setting_dropdown() {
+  global $badApi;
+  if ($badApi) {
+    echo("-");
+    return;
+  }
+  
   $options = get_option('ob_campayn_list');                                                   
-  $default_value = NULL;                                                                
-  $current_value = $options['text_string'];                                                               
-  $chooseFrom = array();                                                                                                                             
+  $default_value = NULL;         
+  
+  if (isset($options['text_string'])) {
+    $current_value = $options['text_string'];  
+  } else {
+    $current_value = "";
+  }
+  
+  $chooseFrom = array();
   $choices = campayn_get_lists(); // Array ( [0] => Array ( [id] => 1589 [list_name] => Sample Contact List [tags] => [contact_count] => 14 ) )
   if (!empty($choices)) foreach($choices AS $option) {
     $key = $option['id'];
