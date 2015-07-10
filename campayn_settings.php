@@ -54,6 +54,11 @@ var $sections_withkey = array(
               'suffix' => "",
               'default_value' => ""
               ),
+          'apikeyresult' => array (
+              'label' => "Key check",
+              'description' => "",
+              'function' => 'campaynApiKeyCheck'
+              ),
           'forms' => array (
               'label' => "Forms",    
               'function' => "ob_api_key_callback",
@@ -65,7 +70,7 @@ var $sections_withkey = array(
         ),
     ),
 	  'commentators' => array (        
-       'title' => "Comment subscritions",
+       'title' => "Comment subscriptions",
        'description' => "",
        'fields' => array(
           'enabled' => array (
@@ -95,8 +100,7 @@ var $settingsConfig = NULL;
 function __CONSTRUCT() {
 
 	$this->settingsConfig = get_class_vars(sprintf('%s_settings_config','ob_campayn'));
-
-
+    
     if (function_exists('add_action')) :
       add_action('admin_init', array( &$this, 'admin_init'));
       add_action('admin_menu', array( &$this, 'admin_add_page'));
