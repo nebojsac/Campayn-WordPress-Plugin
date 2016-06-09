@@ -4,7 +4,7 @@ Donate link:
 Tags: email, campayn, marketing, newsletter, plugin, signup, widget, shortcode
 Requires at least: 3.3
 Tested up to: 4.4.2
-Stable tag: 0.192
+Stable tag: 0.193
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ The Campayn plugin makes it easy to add subscribe forms for your Campayn lists, 
 
 The Campayn plugin makes it easy to add subscribe forms for your Campayn lists, or subscribe your commenters to a list.
 
-Campayn is similar to MailChimp, Aweber and Constant Contact but has a Free for Life plan and the lowest cost paid plans. You can sign up for a free account  <a href=\"http://campayn.com/signup\">here</a>.
+Campayn is similar to MailChimp, Aweber and Constant Contact but has a Free for Life plan and the lowest cost paid plans. You can sign up for a free account  <a href=\"https://campayn.com/signup\">here</a>.
 
 After installation the setting page will guide you through the setup and you can have your subscription form on your blog within minutes!
 
